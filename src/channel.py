@@ -38,3 +38,34 @@ class Channel:
         """Запись информации о канале в file_name.json"""
         with open(file_name, 'w') as json_file:
             json.dump(self.channel, json_file, ensure_ascii=False)
+
+    def __str__(self) -> str:
+        return f"{self.title} ({self.url})"
+
+    def __add__(self, other) -> int:
+        """Сложение классов по количеству подписчиков"""
+        return int(self.subscribers_count) + int(other.subscribers_count)
+
+    def __sub__(self, other) -> int:
+        """Разность классов по количеству подписчиков"""
+        return int(self.subscribers_count) - int(other.subscribers_count)
+
+    def __gt__(self, other) -> bool:
+        """Сравнение классов по количеству подписчиков"""
+        return int(self.subscribers_count) > int(other.subscribers_count)
+
+    def __ge__(self, other) -> bool:
+        """Сравнение классов по количеству подписчиков"""
+        return int(self.subscribers_count) >= int(other.subscribers_count)
+
+    def __lt__(self, other) -> bool:
+        """Сравнение классов по количеству подписчиков"""
+        return int(self.subscribers_count) < int(other.subscribers_count)
+
+    def __le__(self, other) -> bool:
+        """Сравнение классов по количеству подписчиков"""
+        return int(self.subscribers_count) <= int(other.subscribers_count)
+
+    def __eq__(self, other) -> bool:
+        """Сравнение классов по количеству подписчиков"""
+        return int(self.subscribers_count) == int(other.subscribers_count)
