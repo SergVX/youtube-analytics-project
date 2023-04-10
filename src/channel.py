@@ -11,6 +11,15 @@ class Channel:
     __youtube = build('youtube', 'v3', developerKey=__API_KEY)
 
     @classmethod
+    def get_video_info(cls, video_id: str) -> dict:
+        """Метод для получения информации о видео из Youtube по его id"""
+
+        video_response = cls.__youtube.videos().list(part='snippet,statistics,contentDetails,topicDetails',
+                                                     id=video_id
+                                                     ).execute()
+        return video_response
+
+    @classmethod
     def get_service(cls):
         return cls.__youtube
 
